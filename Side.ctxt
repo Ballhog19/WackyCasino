@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=Side
+comment1.params=order
+comment1.target=Side(int)
+comment2.params=
+comment2.target=int\ getOrder()
+numComments=3

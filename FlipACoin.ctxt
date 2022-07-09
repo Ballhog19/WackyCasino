@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=FlipACoin
+comment1.params=player
+comment1.target=FlipACoin(Player)
+comment2.params=
+comment2.target=void\ playGame()
+numComments=3
