@@ -15,7 +15,10 @@ public class RockPaperScissors {
     }
 
     public void playGame() throws IOException {
+        //Start of a new game
         while (keepPlaying) {
+
+            //Determine the dealer's Rps
             int num = (int) (Math.random() * 3);
             switch (num) {
                 case 0:
@@ -30,6 +33,8 @@ public class RockPaperScissors {
             }
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             System.out.println("Let's Play Rock, Paper, Scissors!\n");
+
+            //Get player's bet
             System.out.println("You have " + player.getMoneyInPocket() + " dollars. How much would you like to bet?");
             int bet = Integer.parseInt(reader.readLine());
             while (bet > player.getMoneyInPocket()) {
@@ -37,11 +42,15 @@ public class RockPaperScissors {
                 bet = Integer.parseInt(reader.readLine());
             }
             player.betMoney(bet);
+
+            //Get player's Rps
             System.out.println("Choose your weapon:\n"
-                    + "1) Rock\n"
-                    + "2) Paper\n"
-                    + "3) Scissors");
+                + "1) Rock\n"
+                + "2) Paper\n"
+                + "3) Scissors");
             int weapon = Integer.parseInt(reader.readLine());
+
+            //Display results
             System.out.println("1, 2, 3, SHOOT!");
             switch (weapon) {
                 case 1:
@@ -56,7 +65,9 @@ public class RockPaperScissors {
                         System.out.println("You Win!");
                         int winnings = bet * 3;
                         player.winMoney(winnings);
-                        System.out.println("You've received " + winnings + " dollars and now have " + player.getMoneyInPocket() + " dollars.");
+                        System.out.println(
+                            "You've received " + winnings + " dollars and now have " + player.getMoneyInPocket() +
+                                " dollars.");
                     }
                     break;
                 case 2:
@@ -71,7 +82,9 @@ public class RockPaperScissors {
                         System.out.println("You Win!");
                         int winnings = bet * 3;
                         player.winMoney(winnings);
-                        System.out.println("You've received " + winnings + " dollars and now have " + player.getMoneyInPocket() + " dollars.");
+                        System.out.println(
+                            "You've received " + winnings + " dollars and now have " + player.getMoneyInPocket() +
+                                " dollars.");
                     }
                     break;
                 case 3:
@@ -86,7 +99,9 @@ public class RockPaperScissors {
                         System.out.println("You Win!");
                         int winnings = bet * 3;
                         player.winMoney(winnings);
-                        System.out.println("You've received " + winnings + " dollars and now have " + player.getMoneyInPocket() + " dollars.");
+                        System.out.println(
+                            "You've received " + winnings + " dollars and now have " + player.getMoneyInPocket() +
+                                " dollars.");
                     }
                     break;
             }
@@ -95,6 +110,7 @@ public class RockPaperScissors {
                 break;
             }
 
+            //Does the player want to play again?
             System.out.println("Would you like to play again? (Y/N)");
             String answer = reader.readLine();
             if (answer.toUpperCase(Locale.ROOT).equals("Y") || answer.toUpperCase(Locale.ROOT).equals("YES")) {

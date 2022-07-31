@@ -1,8 +1,8 @@
 
 /**
  * Write a description of PickANumber here.
- * 
- * @author (your name) 
+ *
+ * @author (your name)
  * @version (a version number or a date)
  */
 
@@ -20,14 +20,18 @@ public class PickANumber {
 
     public PickANumber(Player player) {
         this.player = player;
-        this.dealerPick = (int) (Math.random() * 10 + 1);
     }
 
     public void playGame() throws IOException {
+        //Start of a new game
         while (keepPlaying) {
+            //Determine the dealer's number
+            dealerPick = (int) (Math.random() * 10) + 1;
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             System.out.println("Let's Play Pick A Number!\n"
-                    + "The dealer is holding a number between 1 and 10 behind their back.\n");
+                + "The dealer is holding a number between 1 and 10 behind their back.\n");
+
+            //Get player's bet
             System.out.println("You have " + player.getMoneyInPocket() + " dollars. How much would you like to bet?");
             int bet = Integer.parseInt(reader.readLine());
             while (bet > player.getMoneyInPocket()) {
@@ -35,15 +39,20 @@ public class PickANumber {
                 bet = Integer.parseInt(reader.readLine());
             }
             player.betMoney(bet);
+
+            //Get player's guess
             System.out.println("What is your guess?");
             int guess = Integer.parseInt(reader.readLine());
+
+            //Display results
             System.out.println("Your guess was: " + guess);
             System.out.println("The dealer was hiding: " + dealerPick);
             if (guess == dealerPick) {
                 System.out.println("You Won!");
                 int winnings = bet * 10;
                 player.winMoney(winnings);
-                System.out.println("You've received " + winnings + " dollars and now have " + player.getMoneyInPocket() + " dollars.");
+                System.out.println(
+                    "You've received " + winnings + " dollars and now have " + player.getMoneyInPocket() + " dollars.");
             } else {
                 System.out.println("You Lost!");
                 System.out.println("You now have " + player.getMoneyInPocket());
@@ -53,13 +62,14 @@ public class PickANumber {
                 break;
             }
 
+            //Does the player want to play again?
             System.out.println("Would you like to play again? (Y/N)");
             String answer = reader.readLine();
             if (answer.toUpperCase(Locale.ROOT).equals("Y") || answer.toUpperCase(Locale.ROOT).equals("YES")) {
                 continue;
             } else if (answer.toUpperCase(Locale.ROOT).equals("N") || answer.toUpperCase(Locale.ROOT).equals("NO")) {
-                    System.out.println("Thanks for Playing Pick a Number. Come again soon!");
-                    keepPlaying = false;
+                System.out.println("Thanks for Playing Pick a Number. Come again soon!");
+                keepPlaying = false;
             }
         }
     }

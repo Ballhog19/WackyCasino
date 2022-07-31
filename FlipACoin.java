@@ -14,7 +14,10 @@ public class FlipACoin {
     }
 
     public void playGame() throws IOException {
+        //Start of a new game
         while (keepPlaying) {
+
+            //Generate the dealer's coin flip result
             int flip = (int) (Math.random() * 2);
             for (Side side : Side.values()) {
                 if (side.getOrder() == flip) {
@@ -30,10 +33,14 @@ public class FlipACoin {
                 bet = Integer.parseInt(reader.readLine());
             }
             player.betMoney(bet);
+
+            //Get players guess
             System.out.println("What is your guess?\n"
-                                + "1) Heads\n"
-                                + "2) Tails");
+                + "1) Heads\n"
+                + "2) Tails");
             int guess = Integer.parseInt(reader.readLine());
+
+            //Determine if player's guess matches dealer's flip
             for (Side side : Side.values()) {
                 if (guess == side.getOrder()) {
                     System.out.println("Your guess was: " + side);
@@ -42,11 +49,13 @@ public class FlipACoin {
             System.out.println("The dealer flips the coin...");
             System.out.println("It's " + coinFlip);
 
+            //Display results
             if (guess == coinFlip.getOrder() + 1) {
                 System.out.println("You Won!");
                 int winnings = bet * 2;
                 player.winMoney(winnings);
-                System.out.println("You've received " + winnings + " dollars and now have " + player.getMoneyInPocket() + " dollars.");
+                System.out.println(
+                    "You've received " + winnings + " dollars and now have " + player.getMoneyInPocket() + " dollars.");
             } else {
                 System.out.println("You Lost!");
                 System.out.println("You now have " + player.getMoneyInPocket());
@@ -56,6 +65,7 @@ public class FlipACoin {
                 break;
             }
 
+            //Does the player want to play again?
             System.out.println("Would you like to play again? (Y/N)");
             String answer = reader.readLine();
             if (answer.toUpperCase(Locale.ROOT).equals("Y") || answer.toUpperCase(Locale.ROOT).equals("YES")) {

@@ -1,6 +1,6 @@
 public enum Side {
-    HEADS (0),
-    TAILS (1);
+    HEADS(0),
+    TAILS(1);
 
     private int order;
 
