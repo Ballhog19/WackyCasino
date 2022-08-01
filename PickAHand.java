@@ -6,7 +6,7 @@ import java.util.Locale;
 public class PickAHand {
 
     private Hand handPick;
-    private Player player;
+    private final Player player;
     private boolean keepPlaying = true;
 
     public PickAHand(Player player) {
@@ -38,9 +38,10 @@ public class PickAHand {
             System.out.println("The dealer matches your bet and places the money in a hand behind their back.");
 
             //Get the player's guess
-            System.out.println("What is your guess?\n"
-                + "1) Left\n"
-                + "2) Right");
+            System.out.println("""
+                What is your guess?
+                1) Left
+                2) Right""");
             int guess = Integer.parseInt(reader.readLine());
 
             //Determine if the player's guess matches the dealer's hand

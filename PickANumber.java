@@ -15,7 +15,7 @@ import java.util.Random;
 public class PickANumber {
 
     private int dealerPick;
-    private Player player;
+    private final Player player;
     private boolean keepPlaying = true;
 
     public PickANumber(Player player) {
@@ -28,8 +28,10 @@ public class PickANumber {
             //Determine the dealer's number
             dealerPick = (int) (Math.random() * 10) + 1;
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            System.out.println("Let's Play Pick A Number!\n"
-                + "The dealer is holding a number between 1 and 10 behind their back.\n");
+            System.out.println("""
+                Let's Play Pick A Number!
+                The dealer is holding a number between 1 and 10 behind their back.
+                """);
 
             //Get player's bet
             System.out.println("You have " + player.getMoneyInPocket() + " dollars. How much would you like to bet?");

@@ -3,7 +3,7 @@ public enum Rps {
     PAPER(1),
     SCISSORS(2);
 
-    private int order;
+    private final int order;
 
     private Rps(int order) {
         this.order = order;

@@ -6,7 +6,7 @@ import java.util.Locale;
 public class RockPaperScissors {
 
     private Rps dealerPick;
-    private Player player;
+    private final Player player;
     private boolean keepPlaying = true;
 
     public RockPaperScissors(Player player) {
@@ -21,15 +21,9 @@ public class RockPaperScissors {
             //Determine the dealer's Rps
             int num = (int) (Math.random() * 3);
             switch (num) {
-                case 0:
-                    this.dealerPick = Rps.ROCK;
-                    break;
-                case 1:
-                    this.dealerPick = Rps.PAPER;
-                    break;
-                case 2:
-                    this.dealerPick = Rps.SCISSORS;
-                    break;
+                case 0 -> this.dealerPick = Rps.ROCK;
+                case 1 -> this.dealerPick = Rps.PAPER;
+                case 2 -> this.dealerPick = Rps.SCISSORS;
             }
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             System.out.println("Let's Play Rock, Paper, Scissors!\n");
@@ -44,16 +38,17 @@ public class RockPaperScissors {
             player.betMoney(bet);
 
             //Get player's Rps
-            System.out.println("Choose your weapon:\n"
-                + "1) Rock\n"
-                + "2) Paper\n"
-                + "3) Scissors");
+            System.out.println("""
+                Choose your weapon:
+                1) Rock
+                2) Paper
+                3) Scissors""");
             int weapon = Integer.parseInt(reader.readLine());
 
             //Display results
             System.out.println("1, 2, 3, SHOOT!");
             switch (weapon) {
-                case 1:
+                case 1 -> {
                     System.out.println("You chose Rock");
                     System.out.println("Dealer chose " + dealerPick);
                     if (dealerPick.getOrder() == 0) {
@@ -69,8 +64,8 @@ public class RockPaperScissors {
                             "You've received " + winnings + " dollars and now have " + player.getMoneyInPocket() +
                                 " dollars.");
                     }
-                    break;
-                case 2:
+                }
+                case 2 -> {
                     System.out.println("You chose Paper");
                     System.out.println("Dealer chose " + dealerPick);
                     if (dealerPick.getOrder() == 1) {
@@ -86,8 +81,8 @@ public class RockPaperScissors {
                             "You've received " + winnings + " dollars and now have " + player.getMoneyInPocket() +
                                 " dollars.");
                     }
-                    break;
-                case 3:
+                }
+                case 3 -> {
                     System.out.println("You chose Scissors");
                     System.out.println("Dealer chose " + dealerPick);
                     if (dealerPick.getOrder() == 2) {
@@ -103,7 +98,7 @@ public class RockPaperScissors {
                             "You've received " + winnings + " dollars and now have " + player.getMoneyInPocket() +
                                 " dollars.");
                     }
-                    break;
+                }
             }
 
             if (player.getMoneyInPocket() == 0) {

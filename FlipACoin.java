@@ -35,9 +35,10 @@ public class FlipACoin {
             player.betMoney(bet);
 
             //Get players guess
-            System.out.println("What is your guess?\n"
-                + "1) Heads\n"
-                + "2) Tails");
+            System.out.println("""
+                What is your guess?
+                1) Heads
+                2) Tails""");
             int guess = Integer.parseInt(reader.readLine());
 
             //Determine if player's guess matches dealer's flip

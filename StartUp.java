@@ -7,7 +7,7 @@
  */
 public class StartUp {
 
-    private String wacky = ""
+    private final String wacky = ""
         + "                                     .  .\n"
         + "                                  .  .  .  .\n"
         + "                                  .  |  |  .\n"
@@ -23,7 +23,7 @@ public class StartUp {
         + "                                    |0\\/0|\n"
         + "                                     \\/\\/\n"
         + "                                      \\/";
-    private String casino = ""
+    private final String casino = ""
         + "                                 88                          \n"
         + "                                 \"\"                          \n"
         + " "

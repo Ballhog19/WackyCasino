@@ -7,7 +7,7 @@ public class War {
 
     private Card dealerCard;
     private Card playerCard;
-    private Player player;
+    private final Player player;
     private boolean keepPlaying;
     private int totalBet;
 

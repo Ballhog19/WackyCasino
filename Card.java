@@ -13,7 +13,7 @@ public enum Card {
     KING(11),
     ACE(12);
 
-    private int order;
+    private final int order;
 
     private Card(int order) {
         this.order = order;
